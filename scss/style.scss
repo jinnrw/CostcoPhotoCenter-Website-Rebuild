@@ -38,8 +38,27 @@ $bg-color: #f2f2f2;
 		}
 }
 
+@mixin mobile-menu() {
+  font-size: 0;
+  width: 24px;
+  height: 3px;
+  border-radius: 1px;
+  background: #fff;
+  line-height: 50px;
+  margin: auto;
+  position: relative;
+  background: currentColor;
+}
 
-utili-bar {
+@mixin transition() {
+  transition: all .2s ease;
+}
+
+
+
+
+// CSS Begins
+.utili-bar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -91,18 +110,19 @@ header {
 // Banner
 .banner {
 	
-	.img {
+	img {
 		width: 100%;
 		overflow: hidden;
 	}
 }
 
-// Main
+// ========== Main ==========
 main {
-	width: 1190px;
-	max-width: 1190px;
-	min-width: 1190px;
+	width: 1020px;
+	max-width: 1020px;
+	min-width: 1020px;
 	margin: 0 auto 30px;
+	// padding: 0 10%;
 }
 
 // Main - header
@@ -141,6 +161,7 @@ main {
 			bottom: 0;
 			right: 0;
 			z-index: 0;
+			width: 100%;
 		}
 		
 		@include grid-content;
@@ -199,7 +220,7 @@ main {
 
 .service {
 	flex-wrap: wrap;
-
+	height: auto;
 	
 	.service-item {
 		width: 33%;
@@ -209,10 +230,12 @@ main {
 	}
 	
 	.service-item img {
-		position: absolute;
-		bottom: -10px;
-    right: 0;
-    width: 100%;
+    // position: absolute;
+    // bottom: 0px;
+    // right: -20px;
+    // width: 110%;
+		width: 100%;
+    display: block;
 	}
 }
 
@@ -222,8 +245,8 @@ footer {
 }
 
 .footer-container {
-	width: 965px;
-	height: 300px;
+	width: 80%;
+	// height: 300px;
 	margin: 0 auto;
 	padding: 20px 0;
 	display: flex;
@@ -282,4 +305,157 @@ footer {
 		font-weight: normal;
 	}
 	
+}
+
+
+// ========== Responsive ==========
+@media screen and (max-width: 1020px) {
+
+	header {
+		padding: 20px 5%;
+		
+		.logo img{
+			width: 100px;
+		}
+	}
+
+	.utili-bar {
+		padding: 10px 5%;
+	}
+	
+	main {
+		width: 900px;
+		max-width: 900px;
+		min-width: 900px;
+		// padding: 0 5%;
+	}
+	
+
+}
+
+@media screen and (max-width: 900px) {
+
+	main {
+		width: 780px;
+		max-width: 780px;
+		min-width: 780px;
+		// padding: 0 5%;
+	}
+	
+	
+}
+
+@media screen and (max-width: 780px) {
+
+	main {
+		width: 100%;
+		max-width: 100%;
+		min-width: 100%;
+		padding: 0 30px;
+	}
+	
+	.grid {
+		flex-direction: column;
+		height: auto;
+	}
+	
+	.flex-bot {
+		flex-direction: column;
+		> div {
+			border: 10px solid #fff;
+    	border-left: 0;
+		}
+		
+		.flex-bot-child img {
+			right: 0px;
+			width: 100%;
+			bottom: -30px;
+			
+		}
+	}
+	
+	.flex-right {
+		border-left: 0;
+		border-right: 10px solid #fff;
+		
+		img {
+			width: 100%;
+		}
+	}
+	
+	.service {
+		flex-direction: row;
+		
+		.service .service-item {
+			width: 50%;
+		}
+	}
+	
+	.utili-bar {
+		display: none;
+	}
+	
+	header {
+		justify-content: center;
+		border-bottom: 1px solid #f2f2f2;
+		margin-bottom: 20px;
+		
+		.logo {
+			
+			.mobile {
+				display: block;
+				position: absolute;
+				top: 30px;
+				left: 20px;
+			}
+		}
+		
+		.logo img{
+			width: 200px;
+		}
+	
+		.nav {
+			display: none;
+		}
+	}
+	
+	
+	
+}
+
+
+//  Mobile Menu
+.mobile {
+	display: none;
+	cursor: pointer;
+	
+  .mobile-menu {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    color: #000;
+
+    &:hover {
+			color: #E51937;
+    }
+
+    h2 {
+      @include mobile-menu();
+			@include transition();
+			
+      &::before {
+        @include mobile-menu();
+        content: '';
+        position: absolute;
+        top: -9px;
+      }
+      &::after {
+        @include mobile-menu();
+        content: '';
+        position: absolute;
+        top: 9px;
+      }
+    }
+  }
 }
