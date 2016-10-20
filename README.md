@@ -9,4 +9,5 @@ This is a self practice of rebuilding the [Costco Photo Center](https://www.cost
 ### View on
 
 1. View the [live demo](http://codepen.io/jinnrw/pen/WGawEG) on CodePen.
+2. View the [website](https://jinnrw.github.io/CostcoPhotoCenter-Website-Rebuild/).
 
